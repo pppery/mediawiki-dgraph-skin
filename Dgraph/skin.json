@@ -106,6 +106,7 @@
 		}
 	},
 	"config": {
+		"DgraphUseCorporateFooter": true,
 		"DgraphUseSimpleSearch": true,
 		"DgraphUseIconWatch": true,
 		"DgraphResponsive": false

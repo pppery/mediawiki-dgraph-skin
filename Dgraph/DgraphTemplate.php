@@ -95,6 +95,13 @@ class DgraphTemplate extends BaseTemplate {
 
 		// Output HTML Page
 		$this->html( 'headelement' );
+		$logos = ResourceLoaderSkinModule::getAvailableLogos( $this->getSkin()->getConfig() );
+		$wordmark = $logos['wordmark'] ?? [
+			"src" => "$assetsPath/assets/images/logo.svg",
+			"width" => 233,
+			"height" => 70,
+		];
+
 		?>
 		  <header id="page-header" class="page-header">
 			<div class="page-header-primary">
@@ -103,7 +110,8 @@ class DgraphTemplate extends BaseTemplate {
 				  <div class="col-6 col-desktop-4">
 					<figure class="page-logo"><a href="<?php
 					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>"><img src="<?php echo $assetsPath; ?>/assets/images/logo.svg" width="233" height="70" alt=""></a></figure>
+					?>"><img src="<?php echo $wordmark["src"] . '" width="' . $wordmark["width"]
+						.'" height="' . $wordmark["height"] . '"' ?>alt=""></a></figure>
 				  </div>
 				  <div class="col-6 col-desktop-8">
 					<nav class="page-nav">
@@ -317,9 +325,19 @@ class DgraphTemplate extends BaseTemplate {
         <div class="row">
           <div class="col-12 col-tablet-3">
             <figure class="page-logo-footer"><a href="<?php
-					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>"><img src="<?php echo $assetsPath; ?>/assets/images/logo.svg" width="140" height="42" alt="Dgraph Logo"></a></figure>
+					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] );
+					// scale down from 233x70 to
+					$logoWidth = ceil( $wordmark['width'] * 0.6 );
+					$logoHeight = ceil( $wordmark['height'] * 0.6 );
+					?>">
+					<img src="<?php echo $wordmark['src']?>"
+						width="<?php echo $wordmark['width']?>"
+						height="<?php echo $wordmark['height']?>" alt="<?php echo $this->msg('sitename') ?>">
+				</a></figure>
           </div>
+		  <?php
+			$useCorporateHeader = $this->getSkin()->getConfig()->get( 'DgraphUseCorporateFooter' );
+		  if ( $useCorporateHeader ) {?>
           <div class="col-4 col-tablet-2">
             <nav class="page-footer-nav">
               <h6 class="page-footer-nav__title">Company</h6>
@@ -354,6 +372,7 @@ class DgraphTemplate extends BaseTemplate {
           <div class="col-12"><span class="imprint__copyrights">Copyright &copy; 2016 Dgraph Labs, Inc.</span></div>
         </div>
       </div>
+	  <?php } ?>
     </footer>
     <!-- / page-footer-->
   </div>
