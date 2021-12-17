@@ -39,8 +39,14 @@ class DgraphTemplate extends BaseTemplate {
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
-		if ( $this->config->get( 'VectorUseIconWatch' ) ) {
-			$mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() )
+		if ( $this->config->get( 'DgraphUseIconWatch' ) ) {
+			$user = $this->getSkin()->getUser();
+			$instance = MediaWiki\MediaWikiServices::getInstance();
+			$isWatched = $instance->getWatchedItemStore()->isWatched(
+				$user,
+				$this->getSkin()->getRelevantTitle()
+			);
+			$mode = $isWatched
 				? 'unwatch'
 				: 'watch';
 
