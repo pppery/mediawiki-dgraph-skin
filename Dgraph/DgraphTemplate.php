@@ -375,7 +375,19 @@ class DgraphTemplate extends BaseTemplate {
           </div>
         </div>
         <div class="row">
-          <div class="col-12"><span class="imprint__copyrights">Copyright &copy; 2016 Dgraph Labs, Inc.</span></div>
+          <div class="col-12">
+			<?php
+			$validFooterLinks = $this->getFooterLinks();
+			foreach( $validFooterLinks['info'] ?? [] as $key => $link ) {
+				if ( $link === 'copyright' ) {
+					echo Html::rawElement( 'span', [
+						'id' => 'footer-' . $link,
+						'class' => 'imprint__copyrights',
+					], $this->get( $link ) );
+				}
+			}?>
+		</div>
+
         </div>
       </div>
 	  <?php } ?>
