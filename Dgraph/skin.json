@@ -96,9 +96,5 @@
 			"mediawiki.special.preferences": "skinStyles/mediawiki.special.preferences.less"
 		}
 	},
-	"config": {
-		"DgraphUseSimpleSearch": true,
-		"DgraphUseIconWatch": true
-	},
 	"manifest_version": 1
 }

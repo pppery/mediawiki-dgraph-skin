@@ -39,23 +39,21 @@ class DgraphTemplate extends BaseTemplate {
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
 
-		if ( $this->config->get( 'DgraphUseIconWatch' ) ) {
-			$user = $this->getSkin()->getUser();
-			$instance = MediaWiki\MediaWikiServices::getInstance();
-			$isWatched = $instance->getWatchedItemStore()->isWatched(
-				$user,
-				$this->getSkin()->getRelevantTitle()
-			);
-			$mode = $isWatched
-				? 'unwatch'
-				: 'watch';
+		$user = $this->getSkin()->getUser();
+		$instance = MediaWiki\MediaWikiServices::getInstance();
+		$isWatched = $instance->getWatchedItemStore()->isWatched(
+			$user,
+			$this->getSkin()->getRelevantTitle()
+		);
+		$mode = $isWatched
+			? 'unwatch'
+			: 'watch';
 
-			if ( isset( $nav['actions'][$mode] ) ) {
-				$nav['views'][$mode] = $nav['actions'][$mode];
-				$nav['views'][$mode]['class'] = rtrim( 'icon ' . $nav['views'][$mode]['class'], ' ' );
-				$nav['views'][$mode]['primary'] = true;
-				unset( $nav['actions'][$mode] );
-			}
+		if ( isset( $nav['actions'][$mode] ) ) {
+			$nav['views'][$mode] = $nav['actions'][$mode];
+			$nav['views'][$mode]['class'] = rtrim( 'icon ' . $nav['views'][$mode]['class'], ' ' );
+			$nav['views'][$mode]['primary'] = true;
+			unset( $nav['actions'][$mode] );
 		}
 		$xmlID = '';
 		foreach ( $nav as $section => $links ) {
@@ -727,7 +725,7 @@ class DgraphTemplate extends BaseTemplate {
 						</h3>
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<div<?php echo $this->config->get( 'DgraphUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
+							<div id="simpleSearch">
 							<?php
 							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
