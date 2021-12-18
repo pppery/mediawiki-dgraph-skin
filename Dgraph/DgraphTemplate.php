@@ -203,13 +203,19 @@ class DgraphTemplate extends BaseTemplate {
 						</li>
 					  </ul>
 					  <ul class="page-nav__list">
-						<li class="page-nav__item"><a href="<?php
-					echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] )
-					?>" class="page-nav__link">Main Page</a></li>
-						<li class="page-nav__item"><a href="<?php
-					echo htmlspecialchars( Title::newFromText("Special:RecentChanges")->getFullURL() );
-					?>" class="page-nav__link">Recent Changes</a></li>
-					  </ul>
+					<?php
+					$nav = $this->data['sidebar']['navigation'] ?? [];
+					foreach( array_slice( $nav, 0, 2 ) as $item ) {
+					?>
+						<li class="page-nav__item">
+							<a href="<?php echo $item['href']?>"
+								class="page-nav__link">
+								<?php echo $item['text']; ?>
+							</a></li>
+					<?php
+					}
+					?>
+					</ul>
 					</nav>
 				  </div>
 				</div>
