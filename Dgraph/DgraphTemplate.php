@@ -352,37 +352,38 @@ class DgraphTemplate extends BaseTemplate {
 						height="<?php echo $wordmark['height']?>" alt="<?php echo $this->msg('sitename') ?>">
 				</a></figure>
           </div>
-		  <?php
-			$useCorporateHeader = $this->getSkin()->getConfig()->get( 'DgraphUseCorporateFooter' );
-		  if ( $useCorporateHeader ) {?>
           <div class="col-4 col-tablet-2">
             <nav class="page-footer-nav">
-              <h6 class="page-footer-nav__title">Company</h6>
+              <h6 class="page-footer-nav__title"><?php echo $this->getMsg( 'dgraph-header-company' ) ?></h6>
               <ul class="page-footer-nav__list">
-                <li class="page-footer-nav__item"><a href="https://dgraph.io/" title="Learn more about us" class="page-footer-nav__link">dgraph.io</a></li>
+              <?php
+                $this->footerNavItem( 'company-1' )
+             ?>
               </ul>
             </nav>
           </div>
           <div class="col-4 col-tablet-2">
             <nav class="page-footer-nav">
-              <h6 class="page-footer-nav__title">Community</h6>
+              <h6 class="page-footer-nav__title"><?php echo $this->getMsg( 'dgraph-header-community' ) ?></h6>
               <ul class="page-footer-nav__list">
-                <li class="page-footer-nav__item"><a href="https://open.dgraph.io/" title="Thoughts on usage of graph database." class="page-footer-nav__link">Blog</a></li>
-                <li class="page-footer-nav__item"><a href="https://wiki.dgraph.io" title="Discuss about Dgraph with us." target="_blank" class="page-footer-nav__link link-alias">Dgraph Wiki</a></li>
                 <?php
+                echo $this->footerNavItem( 'community-1' );
+                echo $this->footerNavItem( 'community-2' );
                 echo $this->footerNavItem( 'github' );
+                echo $this->footerNavItem( 'community-3' );
+                echo $this->footerNavItem( 'community-4' );
                 ?>
-                <li class="page-footer-nav__item"><a href="https://discuss.dgraph.io/" title="Discuss about Dgraph with us." target="_blank" class="page-footer-nav__link link-alias">Discuss</a></li>
-                <li class="page-footer-nav__item"><a href="https://slack.dgraph.io/" title="Slack about Dgraph with us." target="_blank" class="page-footer-nav__link link-alias">Slack</a></li>
               </ul>
             </nav>
           </div>
           <div class="col-4 col-tablet-2">
             <nav class="page-footer-nav">
-              <h6 class="page-footer-nav__title">Connect</h6>
+              <h6 class="page-footer-nav__title"><?php echo $this->getMsg( 'dgraph-header-connect' ) ?></h6>
               <ul class="page-footer-nav__list">
-                <li class="page-footer-nav__item"><a href="https://twitter.com/dgraphlabs" title="Follow us on Twitter" target="_blank" class="page-footer-nav__link link-alias">Twitter</a></li>
-                <li class="page-footer-nav__item"><a href="https://angel.co/dgraph-labs" title="Dgraph on Angel List" target="_blank" class="page-footer-nav__link link-alias">Angel List</a></li>
+                <?php
+                echo $this->footerNavItem( 'twitter' );
+                echo $this->footerNavItem( 'connect-1' );
+                ?>
               </ul>
             </nav>
           </div>
@@ -403,7 +404,6 @@ class DgraphTemplate extends BaseTemplate {
 
         </div>
       </div>
-	  <?php } ?>
     </footer>
     <!-- / page-footer-->
   </div>
