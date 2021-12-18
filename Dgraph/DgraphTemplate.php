@@ -122,7 +122,12 @@ class DgraphTemplate extends BaseTemplate {
 				  <div class="col-6 col-desktop-8">
 					<nav class="page-nav">
 					  <ul class="page-nav__list page-nav__list--right">
-						<li class="page-nav__item"><a href="https://github.com/dgraph-io/dgraph" data-style="mega" data-count-href="/dgraph-io/dgraph/stargazers" data-count-api="/repos/dgraph-io/dgraph#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star dgraph-io/dgraph on GitHub" class="github-button">Star</a></li>
+						<li class="page-nav__item">
+							<?php $this->navLink( 'github', [
+								"style" => "mega",
+								"class" => "github-button"
+							])?>
+						</li>
 					  </ul>
 					</nav>
 				  </div>
@@ -364,7 +369,9 @@ class DgraphTemplate extends BaseTemplate {
               <ul class="page-footer-nav__list">
                 <li class="page-footer-nav__item"><a href="https://open.dgraph.io/" title="Thoughts on usage of graph database." class="page-footer-nav__link">Blog</a></li>
                 <li class="page-footer-nav__item"><a href="https://wiki.dgraph.io" title="Discuss about Dgraph with us." target="_blank" class="page-footer-nav__link link-alias">Dgraph Wiki</a></li>
-                <li class="page-footer-nav__item"><a href="https://github.com/dgraph-io/dgraph" title="Wa are on GitHub, check it out." target="_blank" class="page-footer-nav__link link-alias">GitHub</a></li>
+                <?php
+                echo $this->footerNavItem( 'github' );
+                ?>
                 <li class="page-footer-nav__item"><a href="https://discuss.dgraph.io/" title="Discuss about Dgraph with us." target="_blank" class="page-footer-nav__link link-alias">Discuss</a></li>
                 <li class="page-footer-nav__item"><a href="https://slack.dgraph.io/" title="Slack about Dgraph with us." target="_blank" class="page-footer-nav__link link-alias">Slack</a></li>
               </ul>
@@ -415,6 +422,34 @@ class DgraphTemplate extends BaseTemplate {
   </body>
 </html>
 <?php
+	}
+
+	private function navLink( $id, $attrs = [] ) {
+		$key = 'dgraph-link-' . $id . '-';
+		$url = $this->getMsg( $key . 'url' )->escaped();
+		$title = $this->getMsg( $key . 'title' )->escaped();
+		$label = $this->getMsg( $key . 'text' )->text();
+		$className = $attrs["class"] ?? '';
+		echo Html::element( 'a', $attrs + [
+			'title' => $title,
+			'href' => $url,
+			"class" => "page-footer-nav__link link-alias " . $className,
+		], $label );
+	}
+
+	private function footerNavItem( $id ) {
+		$key = 'dgraph-link-' . $id . '-';
+		$url = $this->getMsg( $key . 'url' );
+		if ( $url->isDisabled() ) {
+			return;
+		}
+		?>
+		<li class="page-footer-nav__item">
+			<?php
+			$this->navLink( $id );
+			?>
+		</li>
+		<?php
 	}
 
 	/**

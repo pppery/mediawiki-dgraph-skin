@@ -4,5 +4,8 @@
 	},
 	"skinname-dgraph": "DGraph",
 	"dgraph-skin-desc": "DGraph skin.",
-	"dgraph-more-actions": "More"
+	"dgraph-more-actions": "More",
+	"dgraph-link-github-url": "https://github.com/wikimedia/mediawiki-dgraph-skin",
+	"dgraph-link-github-text": "Github",
+	"dgraph-link-github-title": "We are on GitHub, check it out."
 }
