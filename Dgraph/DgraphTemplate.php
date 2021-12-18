@@ -355,8 +355,14 @@ class DgraphTemplate extends BaseTemplate {
               <h6 class="page-footer-nav__title"><?php echo $this->getMsg( 'dgraph-header-company' ) ?></h6>
               <ul class="page-footer-nav__list">
               <?php
-                $this->footerNavItem( 'company-1' )
-             ?>
+                $validFooterLinks = $this->getFooterLinks();
+                foreach( ( $validFooterLinks['places'] ?? [] ) as $key => $link ) {
+                    ?><li class="page-footer-nav__item"><?php
+                    echo Html::rawElement( 'span', [
+                        'id' => 'footer-' . $link,
+                    ], $this->get( $link ) );
+                    ?></li><?php
+                }?>
               </ul>
             </nav>
           </div>
@@ -390,7 +396,7 @@ class DgraphTemplate extends BaseTemplate {
           <div class="col-12">
 			<?php
 			$validFooterLinks = $this->getFooterLinks();
-			foreach( $validFooterLinks['info'] ?? [] as $key => $link ) {
+			foreach( ( $validFooterLinks['info'] ?? [] ) as $key => $link ) {
 				if ( $link === 'copyright' ) {
 					echo Html::rawElement( 'span', [
 						'id' => 'footer-' . $link,
