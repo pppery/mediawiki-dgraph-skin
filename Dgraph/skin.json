@@ -17,15 +17,17 @@
 	},
 	"ValidSkinNames": {
 		"dgraph": {
-			"class": "SkinDgraph",
+			"class": "SkinTemplate",
 			"args": [
 				{
 					"name": "dgraph",
+					"responsive": true,
 					"template": "DgraphTemplate",
 					"styles": [
 						"skins.dgraph.styles"
 					],
 					"scripts": [
+						"skins.dgraph.js"
 					]
 				}
 			]
@@ -37,31 +39,26 @@
 		]
 	},
 	"AutoloadClasses": {
-		"SkinDgraph": "SkinDgraph.php",
 		"DgraphTemplate": "DgraphTemplate.php"
 	},
 	"@note": "When modifying skins.dgraph.styles definition, make sure the installer still works",
 	"ResourceModules": {
 		"skins.dgraph.styles": {
 			"class": "ResourceLoaderSkinModule",
-			"styles": {
-				"screen.less": {
-					"media": "screen"
-				},
-				"screen-hd.less": {
-					"media": "screen and (min-width: 982px)"
-				}
-			}
+			"features": {
+				"interface-category": false
+			},
+			"styles": [
+				"assets/css/fonts.css",
+				"assets/css/style.min.css"
+			]
 		},
 		"skins.dgraph.js": {
 			"scripts": [
-				"collapsibleTabs.js",
-				"dgraph.js"
-			],
-			"position": "top",
-			"dependencies": [
-				"jquery.throttle-debounce",
-				"jquery.tabIndex"
+				"assets/js/modernizr.min.js",
+				"assets/js/script.min.js",
+				"assets/js/unminified/vendor/highlight-js/highlight.pack.js",
+				"assets/js/dgraph.js"
 			]
 		}
 	},

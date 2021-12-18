@@ -34,7 +34,7 @@ class DgraphTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the (X)HTML page
 	 */
 	public function execute() {
-		$assetsPath = htmlspecialchars( $this->config->get( 'LocalStylePath' ) ) . '/' . $this->getSkin()->stylename;
+		$assetsPath = htmlspecialchars( $this->config->get( 'LocalStylePath' ) ) . '/DGraph';
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -407,16 +407,8 @@ class DgraphTemplate extends BaseTemplate {
   </div>
   <!-- / page-footer__wrapper-->
 		<?php $this->printTrail(); ?>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- Minified script-->
-  <script type="text/javascript" src="<?php echo $assetsPath; ?>/assets/js/script.min.js"></script>
   <!-- GitHub star button-->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Highlight JS plugin-->
-  <script type="text/javascript" src="<?php echo $assetsPath; ?>/assets/js/unminified/vendor/highlight-js/highlight.pack.js"></script>
-  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
-
   </body>
 </html>
 <?php
