@@ -36,12 +36,8 @@ class SkinDgraph extends SkinTemplate {
 	private $dConfig;
 
 	public function __construct( $options = [] ) {
-		$this->dConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'vector' );
-
-		if ( $this->dConfig->get( 'DgraphResponsive' ) ) {
-			$options['responsive'] = true;
-			$options['styles'][] = 'skins.dgraph.styles.responsive';
-		}
+		$this->dConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'dgraph' );
+		$options['responsive'] = true;
 		parent::__construct( $options );
 	}
 

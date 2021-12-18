@@ -636,7 +636,7 @@ class DgraphTemplate extends BaseTemplate {
 					}
 					?>" aria-labelledby="p-cactions-label">
 						<h3 id="p-cactions-label"><span><?php
-							$this->msg( 'vector-more-actions' )
+							$this->msg( 'dgraph-more-actions' )
 						?></span><a href="#"></a></h3>
 
 						<div class="menu">
@@ -686,7 +686,7 @@ class DgraphTemplate extends BaseTemplate {
 						</h3>
 
 						<form action="<?php $this->text( 'wgScript' ) ?>" id="searchform">
-							<div<?php echo $this->config->get( 'VectorUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
+							<div<?php echo $this->config->get( 'DgraphUseSimpleSearch' ) ? ' id="simpleSearch"' : '' ?>>
 							<?php
 							echo $this->makeSearchInput( array( 'id' => 'searchInput' ) );
 							echo Html::hidden( 'title', $this->get( 'searchtitle' ) );

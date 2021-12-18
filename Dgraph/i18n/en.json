@@ -3,5 +3,6 @@
 		"authors": []
 	},
 	"skinname-dgraph": "DGraph",
-	"dgraph-skin-desc": "DGraph skin."
+	"dgraph-skin-desc": "DGraph skin.",
+	"dgraph-more-actions": "More"
 }
