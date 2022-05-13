@@ -98,7 +98,6 @@ class DgraphTemplate extends BaseTemplate {
 			$this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
 
 		// Output HTML Page
-		$this->html( 'headelement' );
 		$logos = ResourceLoaderSkinModule::getAvailableLogos( $this->getSkin()->getConfig() );
 		$wordmark = $logos['wordmark'] ?? [
 			"src" => "$assetsPath/assets/images/logo.svg",
@@ -412,11 +411,8 @@ class DgraphTemplate extends BaseTemplate {
     <!-- / page-footer-->
   </div>
   <!-- / page-footer__wrapper-->
-		<?php $this->printTrail(); ?>
   <!-- GitHub star button-->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
-</html>
 <?php
 	}
 

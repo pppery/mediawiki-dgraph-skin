@@ -13,7 +13,7 @@
 		"dgraph": "GlobalVarConfig::newInstance"
 	},
 	"requires": {
-		"MediaWiki": ">= 1.36.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"ValidSkinNames": {
 		"dgraph": {
@@ -22,6 +22,7 @@
 				{
 					"name": "dgraph",
 					"responsive": true,
+					"bodyOnly": true,
 					"template": "DgraphTemplate",
 					"styles": [
 						"skins.dgraph.styles"
